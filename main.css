@@ -228,6 +228,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7); /* semi-transparent black */
   z-index: 999; /*Makes it so this will be in front of everything else*/
+  color: white;
   
 }
 

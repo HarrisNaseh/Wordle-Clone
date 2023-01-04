@@ -14,6 +14,10 @@ let board = document.getElementById("game-board");
 let darkMode = false;
 let filled = "filled-box";
 let ready = false;
+overlay();
+// setTimeout(()=>{
+//   overlay();
+// }, 850);
 
 document.getElementById("close-button").addEventListener("click", function () {
   document.getElementById("overlay").style.display = "none";
@@ -114,23 +118,16 @@ function deleteLetter() {
 }
 
 function overlay(){
-  let row = document.getElementsByClassName("letters-row")[0];
-  let box = row.children[0];
-  box.classList.add("correct");
-  box.style.setProperty("--animate-duration", "0.6s");
-  box.classList.add("animate__animated", "animate__flipInX");
-  for(let i = 0; i < 3; i++){
-
-    let row = document.getElementsByClassName("letters-row")[i];
-    for(let y = 0; y < 5; y++){
-      let box = row.children[i];
-
+    for(let i = 0; i < 3; i++){
+      let box = document.getElementsByClassName("flip")[i];
+      box.style.setProperty("--animate-duration", "1s");
+      box.classList.add("animate__animated", "animate__flipInX");
     }
-
+  
   }
   
 
-}
+
 
 /**
  * Checks the currentWord against the correct answer.
@@ -177,10 +174,11 @@ function checkGuess() {
     } else {
       if (letter == rightWord[i]) {
         color = "green";
+        rightWord[position] = "#";
       } else {
         color = "yellow";
       }
-      rightWord[position] = "#";
+      
     }
     setTimeout(() => {
       if (color == "gray") {
@@ -199,6 +197,7 @@ function checkGuess() {
       shadeKeyBoard(letter, color);
     }, delay);
   }
+ 
 
   if (currWord == word) {
     setTimeout(() => {
