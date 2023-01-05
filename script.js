@@ -15,10 +15,16 @@ let darkMode = false;
 let filled = "filled-box";
 let ready = false;
 overlay();
+let nightButtondiv = document.getElementById("nightbutton");
 // setTimeout(()=>{
 //   overlay();
 // }, 850);
 let end = document.createElement("div");
+nightButtondiv.appendChild(end);
+end.className = "end";
+end.innerHTML = `<p>Correct Word: "${word}"<p>`;
+
+//document.body.appendChild(end);
 
 // end.className = "end";
 // end.innerHTML = `<p>Correct Word: "${word}"<p>`;
