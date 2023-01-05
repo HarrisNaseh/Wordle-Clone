@@ -8,7 +8,7 @@ let guessesLeft = NUM_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
 //Chooses a random word from WORDS array
-let word = WORDS[Math.floor(Math.random() * WORDS.length)];
+let word = "tests";//WORDS[Math.floor(Math.random() * WORDS.length)];
 word = word.toUpperCase();
 let board = document.getElementById("game-board");
 let darkMode = false;
@@ -18,13 +18,16 @@ overlay();
 // setTimeout(()=>{
 //   overlay();
 // }, 850);
+let end = document.createElement("div");
+
+// end.className = "end";
+// end.innerHTML = `<p>Correct Word: "${word}"<p>`;
+// document.body.appendChild(end);
 
 document.getElementById("close-button").addEventListener("click", function () {
   document.getElementById("overlay").style.display = "none";
   ready = true;
 });
-
-//alertify.alert('How To Play', 'Guess the Word in 6 or less attempts\nTest');
 
 /**
  * Creates rows and box elements
@@ -200,9 +203,12 @@ function checkGuess() {
  
 
   if (currWord == word) {
-    setTimeout(() => {
-      toastr.success("You got the right Word!");
-    }, 1500);
+  end.className = "end";
+  end.innerHTML = `<p>Absolute MadLad!"<p>`;
+  document.body.appendChild(end);
+    // setTimeout(() => {
+    //   toastr.success("You got the right Word!");
+    // }, 1500);
     animateCSS(row, "jackInTheBox");
     guessesLeft = 0;
   } else {
@@ -213,8 +219,10 @@ function checkGuess() {
     if (guessesLeft == 0) {
       //toastr.info("You ran out of guesses");
       //setTimeout(() => {
-        //toastr.info(`The right word was: "${word}"`);
-        toastr.info(`The right word was: "${word}"`,"You ran out of guesses",{timeOut:0, positionClass: "toast-top-center", extendedTimeOut: 0});
+        end.className = "end";
+        end.innerHTML = `<p>Correct Word: "${word}"<p>`;
+        document.body.appendChild(end);
+        //toastr.info(`The right word was: "${word}"`,"You ran out of guesses",{timeOut:0, positionClass: "toast-top-center", extendedTimeOut: 0});
 
         
       //}, 1500);
