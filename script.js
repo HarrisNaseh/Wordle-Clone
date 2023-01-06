@@ -16,13 +16,10 @@ let filled = "filled-box";
 let ready = false;
 overlay();
 let nightButtondiv = document.getElementById("nightbutton");
-// setTimeout(()=>{
-//   overlay();
-// }, 850);
 let end = document.createElement("div");
-nightButtondiv.appendChild(end);
-end.className = "end";
-end.innerHTML = `<p>Correct Word: "${word}"<p>`;
+// nightButtondiv.appendChild(end);
+// end.className = "end";
+// end.innerHTML = `<p>Correct Word: ${word}<p>`;
 
 //document.body.appendChild(end);
 
@@ -209,12 +206,18 @@ function checkGuess() {
  
 
   if (currWord == word) {
+   
   end.className = "end";
-  end.innerHTML = `<p>Absolute MadLad!"<p>`;
-  document.body.appendChild(end);
-    // setTimeout(() => {
-    //   toastr.success("You got the right Word!");
-    // }, 1500);
+  end.id = "endCorrect";
+  if(guessesLeft == 6){
+    end.style.top = '140px';
+  }
+  end.style.setProperty("--animate-duration", "1s");
+  end.classList.add("animate__animated", "animate__fadeIn");
+  end.innerHTML = `<p>MadLad!<p>`;  
+  
+  nightButtondiv.appendChild(end);
+
     animateCSS(row, "jackInTheBox");
     guessesLeft = 0;
   } else {
@@ -225,9 +228,11 @@ function checkGuess() {
     if (guessesLeft == 0) {
       //toastr.info("You ran out of guesses");
       //setTimeout(() => {
+        nightButtondiv.appendChild(end);
         end.className = "end";
         end.innerHTML = `<p>Correct Word: "${word}"<p>`;
-        document.body.appendChild(end);
+        end.style.setProperty("--animate-duration", "1s");
+        end.classList.add("animate__animated", "animate__fadeIn");
         //toastr.info(`The right word was: "${word}"`,"You ran out of guesses",{timeOut:0, positionClass: "toast-top-center", extendedTimeOut: 0});
 
         
